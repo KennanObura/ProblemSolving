@@ -33,7 +33,6 @@ public class matrixBoardDFS {
                 for (int j = 0; j < s.length(); j++)
                     set.add(s.charAt(j));
 
-//                System.out.println("==" + s);
                 findPossibleWords(grid, visited, 0, 0, set, s);
             }
 
@@ -44,7 +43,7 @@ public class matrixBoardDFS {
             int width = grid.length;
             int height = grid[0].length;
 
-            if (row < 0 || column < 0 || row >= width || column >= height || visited[row][column])
+            if (row < 0 || column < 0 || row >= width || column >= height || visited[row][column] || set.isEmpty())
                 return;
 
             if (set.contains(grid[row][column]))

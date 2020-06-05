@@ -1,7 +1,6 @@
-import java.util.LinkedList;
-import java.util.Queue;
+package AVL;
+
 import java.util.Stack;
-import java.lang.Math.*;
 
 public class AVLTrees {
     public static void main(String[] args) {
@@ -9,7 +8,8 @@ public class AVLTrees {
         tree.add(8);
         tree.add(12);
         tree.add(16);
-//        tree.add(50);
+        tree.add(50);
+        tree.add(6);
         tree.preOrder();
 
         System.out.println("" + tree.balanceFactor());
@@ -84,7 +84,7 @@ class AVLTree {
     }
 
     private void updateHeight(Node node) {
-//        node.height = Math.max(height(node.left), height(node.right)) + 1;
+        node.height = Math.max(height(node.left), height(node.right)) + 1;
     }
 
     private Node reBalance(Node node) {
@@ -93,13 +93,14 @@ class AVLTree {
             if (node.right != null && height(node.right.right) <= height(node.right.left)) {
                 node.right = rotateRight(node.right);
             }
-            node = rotateLeft(node);
+//            node = rotateLeft(node);
         }
         if (balanceFactor() == -2) {
             if (node.left != null && height(node.left.left) <= height(node.left.right)) {
                 node.left = rotateLeft(node.left);
             }
-            node = rotateRight(node);
+
+//            node = rotateRight(node);
         }
         return node;
     }

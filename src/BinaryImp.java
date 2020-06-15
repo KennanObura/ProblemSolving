@@ -16,7 +16,8 @@ public class BinaryImp {
         binary.add(50);
         binary.add(100);
 
-        binary.preOrderPrintPaths();
+//        binary.preOrderPrintPaths();
+        binary.printSpiralLevels();
 
 //        System.out.println(binary.averageOfLevelNodes() + "");
 
@@ -28,7 +29,7 @@ public class BinaryImp {
 //            System.out.println(item.getKey() + " sum:" + item.getValue());
 //        System.out.println( + "");
 //        binary.Node = binary.successorSearch(20);
-        System.out.println(binary.successorSearch(100) + ": success");
+//        System.out.print(binary.successorSearch(100) + ": success");
     }
 }
 
@@ -59,6 +60,38 @@ class Binary {
 
     void printNodeLevels() {
         printNodeLevels(root);
+    }
+
+    void printSpiralLevels() {
+        printSpiralLevels(root);
+    }
+
+
+    //wrong.
+//    Use two stacks, one temp stack inside main while
+    private void printSpiralLevels(Node root) {
+        if (root == null) return;
+
+        Stack<Node> queue = new Stack<>();
+        queue.add(root);
+        boolean direction = false;
+        while (!queue.isEmpty()) {
+            Node temp = queue.pop();
+            System.out.println(temp.data);
+            if (!direction) {
+                if (temp.left != null)
+                    queue.push(temp.left);
+                if (temp.right != null)
+                    queue.push(temp.right);
+                direction = true;
+            } else {
+                if (temp.right != null)
+                    queue.push(temp.right);
+                if (temp.left != null)
+                    queue.push(temp.left);
+                direction = false;
+            }
+        }
     }
 
     void inOrderTraversalItr() {
@@ -92,21 +125,20 @@ class Binary {
 
     /**
      * SUCCESSOR SEARCH I
-     *
+     * <p>
      * The idea is to do a recursive call till Key is found
-     *
-     *  - if Key is found and has right Node (node.right != null)
-     *      do recursive call to on left to find the least node
-     *
-     *  - if Key lies on the left side
-     *      update the the parent as the successor
-     *      then do recursive call on the method (node.left)
-     *
-     *  - if Key lies on the right
-     *      Just do recursive call on method (node.right)
-     *
-     *   return successor
-     *
+     * <p>
+     * - if Key is found and has right Node (node.right != null)
+     * do recursive call to on left to find the least node
+     * <p>
+     * - if Key lies on the left side
+     * update the the parent as the successor
+     * then do recursive call on the method (node.left)
+     * <p>
+     * - if Key lies on the right
+     * Just do recursive call on method (node.right)
+     * <p>
+     * return successor
      *
      * @param current
      * @param input
@@ -128,7 +160,8 @@ class Binary {
     }
 
 
-    /** SUCCESSOR SEARCH II
+    /**
+     * SUCCESSOR SEARCH II
      * Assumption <>
      * in a BST , successor will lie at the right if the right node exist
      * since the BST is sorted.

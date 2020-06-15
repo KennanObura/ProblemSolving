@@ -21,7 +21,6 @@ public class NumericPermutations {
         private void permute(int[] nums, int index, ArrayList<Integer> result) {
             if (index == 0) {
                 System.out.println(Arrays.toString(nums));
-
                 return;
             }
 
@@ -31,7 +30,6 @@ public class NumericPermutations {
                     swap(nums, i, index);
                 else
                     swap(nums, 0, index);
-
             }
             permute(nums, index - 1, result);
         }

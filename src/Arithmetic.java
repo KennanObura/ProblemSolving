@@ -6,7 +6,7 @@ public class Arithmetic {
         int[] items = {2, 3, 4};
         System.out.println("GCD : " +math.greatestCommonDivisor(items) + "");
 
-        System.out.println("LCM : " + math.greatestCommonDivisor(items));
+//        System.out.println("LCM : " + math.greatestCommonDivisor(items));
     }
 }
 

@@ -21,7 +21,7 @@ public class AVLTrees {
 class AVLTree {
     private Node root;
 
-    private class Node {
+    private static class Node {
         int data;
         Node left;
         Node right;

@@ -8,9 +8,9 @@ public class HeapImp {
             minHeap.add(i);
         minHeap.print();
 
-//        System.out.println("Removing an item");
-//        minHeap.remove();
-//        minHeap.print();
+        System.out.println("Removing an item");
+        minHeap.remove();
+        minHeap.print();
 
     }
 }
@@ -38,7 +38,17 @@ class MinHeap {
     }
 
     void remove(){
-        heap = this.remove(heap);
+        int count = heap.size;
+        int index = 0;
+        int [] result = new int[count];
+        while (count > 0) {
+            result[index] = heap.children[heap.size - 1];
+            heap = this.remove(heap);
+            count--;
+            index++;
+        }
+
+        System.out.println(Arrays.toString(result) +" sorted");
     }
 
     void print(){
@@ -74,9 +84,7 @@ class MinHeap {
         while (maxIndex < root.size && root.children[parentIndex] > root.children[maxIndex]) {
             swap(root, parentIndex, maxIndex);
             parentIndex = maxIndex;
-            leftChildIndex = getLeftChild(parentIndex);
-            rightChildIndex = getRightChild(parentIndex);
-            maxIndex = getMinIndex(root, leftChildIndex, rightChildIndex);
+            maxIndex = getMinIndex(root, getLeftChild(parentIndex), getRightChild(parentIndex));
         }
         return root;
     }

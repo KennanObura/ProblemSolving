@@ -17,7 +17,7 @@ public class StandardTrie {
 
 class Node {
     int MAX = 26;
-    Node links[];
+    Node[] links;
     boolean isLeaf;
 
     Node() {

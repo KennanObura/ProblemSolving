@@ -155,8 +155,7 @@ class Binary {
             successor = current.data;
             return successorSearch(current.left, input, successor);
         } else
-            successorSearch(current.right, input, successor);
-        return successor;
+            return successorSearch(current.right, input, successor);
     }
 
 

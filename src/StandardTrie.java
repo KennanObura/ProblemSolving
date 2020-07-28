@@ -17,12 +17,13 @@ public class StandardTrie {
 
 class Node {
     int MAX = 26;
-    Node[] links;
+    Node[] links = new Node[MAX];
     boolean isLeaf;
 
     Node() {
         this.isLeaf = false;
-        this.links = new Node[MAX];
+        for (int i = 0; i < MAX; i++)
+            links[i] = null;
     }
 }
 
@@ -32,8 +33,6 @@ class Trie {
 
     Trie() {
         head = new Node();
-        for (int i = 0; i < head.MAX; i++)
-            head.links[i] = null;
     }
 
     void add(String KEY) {
@@ -65,7 +64,7 @@ class Trie {
         StringBuilder string = new StringBuilder();
         while (childCount(node) == 1 && !node.isLeaf) {
             node = node.links[_index];
-            string.append((char) 'a' + _index);
+            string.append((char) ('a' + _index));
         }
         return string.toString();
     }

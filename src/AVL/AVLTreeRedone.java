@@ -63,11 +63,12 @@ class BalancedTree {
         }
     }
 
+
     private Node insert(Node root, int num) {
         if (root == null) return new Node(num);
         if (num < root.data) root.left = insert(root.left, num);
-        if (num > root.data) root.right = insert(root.right, num);
-//        else throw new RuntimeException("Duplicate not allowed");
+        else if (num > root.data) root.right = insert(root.right, num);
+        else throw new RuntimeException("Duplicate not allowed");
         this.updateHeight(root);
         return reBalance(root, num);
     }

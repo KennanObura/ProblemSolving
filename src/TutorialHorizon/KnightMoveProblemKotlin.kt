@@ -20,7 +20,7 @@ private class KnightMove(length: Int) {
 
     fun findPath(){
         val path : Path = Path(solution)
-        path.findPath(0,1,0)
+        path.findPath(0,0,0)
         path.print()
     }
 }
